@@ -12,7 +12,8 @@ const port = 3000;
 // Enable CORS for all domains, allows any website to use the server
 app.use(cors());
 // Tell Express to use the "public" folder
-app.use(express.static(path.join(process.cwd(), 'public')));
+// app.use(express.static(path.join(process.cwd(), 'public')));
+app.use(express.static(path.join(process.cwd(), '../frontend/public')));
 
 // Array of quotes with authors
 const quotes = [
@@ -55,10 +56,11 @@ const quotes = [
 // Allows a user to see the HTML page when the user visit the site
 app.get('/', (req, res) => {
     // res.sendFile - respond with the index.html file when the root URL is requested
-    // path.join(process.cwd(), 'index.html') - buold full file path
+    //path.join(process.cwd(), '../frontend/public', 'index.html') - build full file path
     // 'process' is a built-in object that gives info and control over the running Node.js program.
     // process.cwd() - get Current Working Directory        
-    res.sendFile(path.join(process.cwd(), 'index.html'));
+    // res.sendFile(path.join(process.cwd(), 'index.html'));
+    res.sendFile(path.join(process.cwd(), '../frontend/public', 'index.html'));
 });
 
 // Sends a random quote when a user requests it (click the "Select a new quote" button)
