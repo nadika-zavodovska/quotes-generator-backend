@@ -2,7 +2,7 @@
 async function fetchQuote() {
     try {
         // Fetch data from the backend at the specified URL
-        const response = await fetch('http://localhost:3000/quote');
+        const response = await fetch('https://nadika-zavodovska-quote-server.hosting.codeyourfuture.io/quote');
         // Convert the response from the server into JSON
         const data = await response.json();
         // Add the text of the quote and author from the data to the quote and author elements
