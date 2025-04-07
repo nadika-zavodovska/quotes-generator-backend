@@ -7,7 +7,7 @@ import path from 'path';
 // Set up the Express app
 const app = express();
 // Port number for the server to listen to
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 // Enable CORS for all domains, allows any website to use the server
 app.use(cors());
@@ -28,7 +28,8 @@ const quotes = [
     {
         quote: "Strive not to be a success, but rather to be of value.",
         author: "Albert Einstein",
-    }, {
+    }, 
+    {
         quote:
             "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
         author: "Robert Frost",
