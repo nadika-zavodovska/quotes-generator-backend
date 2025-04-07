@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
     // 'process' is a built-in object that gives info and control over the running Node.js program.
     // process.cwd() - get Current Working Directory        
     // res.sendFile(path.join(process.cwd(), 'index.html'));
-    res.sendFile(path.join(process.cwd(), '../frontend/public', 'index.html'));
+    res.send('<h1>Backend Working</h1>');
 });
 
 
