@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 // Tell Express to use the "public" folder
 // app.use(express.static(path.join(process.cwd(), 'public')));
-app.use(express.static(path.join(process.cwd(), '/frontend/public')));
+app.use(express.static(path.join(process.cwd(), '../frontend/public')));
 
 // Array of quotes with authors
 const quotes = [
@@ -28,7 +28,7 @@ const quotes = [
     {
         quote: "Strive not to be a success, but rather to be of value.",
         author: "Albert Einstein",
-    }, 
+    },
     {
         quote:
             "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
@@ -53,16 +53,6 @@ const quotes = [
         author: "Amelia Earhart",
     }
 ];
-
-// Allows a user to see the HTML page when the user visit the site
-app.get('/', (req, res) => {
-    // res.sendFile - respond with the index.html file when the root URL is requested
-    //path.join(process.cwd(), '../frontend/public', 'index.html') - build full file path
-    // 'process' is a built-in object that gives info and control over the running Node.js program.
-    // process.cwd() - get Current Working Directory        
-    // res.sendFile(path.join(process.cwd(), 'index.html'));
-    res.sendFile(path.join(process.cwd(), '/frontend/public', 'index.html'));
-});
 
 // Sends a random quote when a user requests it (click the "Select a new quote" button)
 app.get('/quote', (req, res) => {
