@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 // Tell Express to use the "public" folder
 // app.use(express.static(path.join(process.cwd(), 'public')));
-app.use(express.static(path.join(process.cwd(), '../frontend/public')));
+app.use(express.static(path.join(process.cwd(), '/frontend/public')));
 
 // Array of quotes with authors
 const quotes = [
@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
     // 'process' is a built-in object that gives info and control over the running Node.js program.
     // process.cwd() - get Current Working Directory        
     // res.sendFile(path.join(process.cwd(), 'index.html'));
-    res.sendFile(path.join(process.cwd(), '../frontend/public', 'index.html'));
+    res.sendFile(path.join(process.cwd(), '/frontend/public', 'index.html'));
 });
 
 // Sends a random quote when a user requests it (click the "Select a new quote" button)
