@@ -7,7 +7,7 @@ import path from 'path';
 // Set up the Express app
 const app = express();
 // Port number for the server to listen to
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Enable CORS for all domains, allows any website to use the server
 app.use(cors());
@@ -54,26 +54,22 @@ const quotes = [
     }
 ];
 
-// Allows a user to see the HTML page when the user visit the site
+function randomQuote() {
+    const index = Math.floor(Math.random() * quotes.length);
+    return quotes[index];
+}
+
 app.get('/', (req, res) => {
-    // res.sendFile - respond with the index.html file when the root URL is requested
-    //path.join(process.cwd(), '../frontend/public', 'index.html') - build full file path
-    // 'process' is a built-in object that gives info and control over the running Node.js program.
-    // process.cwd() - get Current Working Directory        
-    // res.sendFile(path.join(process.cwd(), 'index.html'));
-    res.send('<h1>Backend Working</h1>');
+    res.send("<p>Backend established.</p>");
 });
 
-
-// Sends a random quote when a user requests it (click the "Select a new quote" button)
-app.get('/quote', (req, res) => {
-    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    // Send the quote as a JSON response
-    res.json(randomQuote);
+app.get("/quote", (req, res) => {
+    const quote = randomQuote();
+    res.json(quote);
 });
 
 // Start the server and listen on the 3000 port
 app.listen(port, () => {
     // Show in the console that the server is running
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on port: ${port}`);
 });
