@@ -30,8 +30,7 @@ const quotes = [
         author: "Albert Einstein",
     },
     {
-        quote:
-            "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
+        quote: "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
         author: "Robert Frost",
     },
     {
@@ -43,13 +42,11 @@ const quotes = [
         author: "Wayne Gretzky",
     },
     {
-        quote:
-            "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
+        quote: "I've missed more than 9000 shots in my career. I've lost almost 300 games. 26 times I've been trusted to take the game winning shot and missed. I've failed over and over and over again in my life. And that is why I succeed.",
         author: "Michael Jordan",
     },
     {
-        quote:
-            "The most difficult thing is the decision to act, the rest is merely tenacity.",
+        quote: "The most difficult thing is the decision to act, the rest is merely tenacity.",
         author: "Amelia Earhart",
     }
 ];
@@ -66,6 +63,18 @@ app.get('/', (req, res) => {
 app.get("/quote", (req, res) => {
     const quote = randomQuote();
     res.json(quote);
+});
+
+// Allow the server to read JSON data sent in the request body
+app.use(express.json());
+
+app.post('/quote', (req, res) => {
+    // Get texts from the inputs the userr sent 
+    const { quote, author } = req.body;
+
+    // Send the new quote from the user to our list of quotes 
+    quotes.push({ quote, author });
+
 });
 
 // Start the server and listen on the 3000 port
