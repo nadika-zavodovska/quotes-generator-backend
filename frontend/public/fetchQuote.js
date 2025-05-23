@@ -17,12 +17,48 @@ async function fetchQuote() {
 
 // When the button with id 'new-quote' is clicked, call the fetchQuote function
 document.getElementById('new-quote').addEventListener('click', fetchQuote);
+
 // #region Form add a new quote 
+// Add addEventListener when click on submit button 
 document.getElementById('quote-form').addEventListener('submit', async function (e) {
+    // Stop page from reloading 
     e.preventDefault();
+    // Get texts from quote, author inputs, and status message field
     const quote = document.getElementById('new-quote-text').value.trim();
     const author = document.getElementById('new-quote-author').value.trim();
     const statusMessage = document.getElementById('form-status-message');
+
+    // Sending the quote and author to the server 
+    try {
+        const response = await fetch('http://localhost:3000/quote', {
+            method: 'POST',
+            // Send data in JSON 
+            headers: { 'Content-Type': 'application/json' },
+            // Convert our data to JSON string 
+            body: JSON.stringify({ quote, author }),
+        });
+        // Wait for the response. Assign result of the response to result variable 
+        const result = await response.json();
+
+        // If something went WebTransportDatagramDuplexStream, show a red error message
+        if (!response.ok) {
+            statusMessage.textContent = result.message || 'Error adding quote.';
+            statusMessage.style.color = 'red';
+        } else {
+            // Show green message, if response was successful
+            statusMessage.textContent = 'Quote added successfully.';
+            statusMessage.style.color = 'green';
+            // Clear the form 
+            document.getElementById('quote-form').reset();
+            // Display the new quote on the page 
+            document.getElementById('quote').innerText = `"${quote}"`;
+            document.getElementById('author').innerText = `— ${author}`;
+        }
+    } catch (err) {
+        // If we get an error, failing to connect to the ServiceWorkerRegistration, show red message alert 
+        statusMessage.textContent = 'Error: Failed to connect to the server!';
+        statusMessage.style.color = 'red';
+    }
 });
 
 // #endregion Form add a new quote 
