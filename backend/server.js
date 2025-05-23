@@ -72,9 +72,14 @@ app.post('/quote', (req, res) => {
     // Get texts from the inputs the userr sent 
     const { quote, author } = req.body;
 
+    // Form validation. Send back an error message if quote or author fields are empty.
+    if (!quote || !author || quote.trim() === '' || author.trim() === '') {        
+        return res.status(400).json({ message: 'Quote and author are required.' });
+    }
+
     // Send the new quote from the user to our list of quotes 
     quotes.push({ quote, author });
-    
+
     // Add successful message 
     res.status(201).json({ message: 'Quote added successfully.' });
 });
