@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quote generator app</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./fetchQuote.js" defer></script>
 </head>
 
 <body>
@@ -16,7 +17,17 @@
         <button type="button" id="new-quote">Select a new quote</button>
     </div>
 
-    <script src="/fetchQuote.js"></script>
+    <!-- #region Add a new quote block -->
+    <div class="add-quote-form-block">
+        <h2>Add a new quote</h2>
+        <form id="quote-form">
+            <input type="text" id="new-quote-text" placeholder="Quote" required />
+            <input type="text" id="new-quote-author" placeholder="Author" required />
+            <button type="submit">Submit</button>
+        </form>
+        <div id="form-status-message"></div>
+    </div>
+    <!-- #endregion Add a new quote block -->    
 </body>
 
 </html>
