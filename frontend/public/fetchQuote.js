@@ -17,6 +17,15 @@ async function fetchQuote() {
 
 // When the button with id 'new-quote' is clicked, call the fetchQuote function
 document.getElementById('new-quote').addEventListener('click', fetchQuote);
+// #region Form add a new quote 
+document.getElementById('quote-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const quote = document.getElementById('new-quote-text').value.trim();
+    const author = document.getElementById('new-quote-author').value.trim();
+    const statusMessage = document.getElementById('form-status-message');
+});
+
+// #endregion Form add a new quote 
 
 // Call the fetchQuote function when the page first loads
 fetchQuote();
