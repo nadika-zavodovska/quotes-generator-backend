@@ -15,8 +15,11 @@ async function fetchQuote() {
     }
 }
 
-// When the button with id 'new-quote' is clicked, call the fetchQuote function
-document.getElementById('new-quote').addEventListener('click', fetchQuote);
+// When the button with id 'new-quote' is clicked, clear the status message and call the fetchQuote function
+document.getElementById('new-quote').addEventListener('click', () => {
+    document.getElementById('form-status-message').textContent = '';
+    fetchQuote();
+});
 
 // #region Form add a new quote 
 // Add addEventListener when click on submit button 
