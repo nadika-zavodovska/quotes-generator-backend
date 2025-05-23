@@ -74,7 +74,9 @@ app.post('/quote', (req, res) => {
 
     // Send the new quote from the user to our list of quotes 
     quotes.push({ quote, author });
-
+    
+    // Add successful message 
+    res.status(201).json({ message: 'Quote added successfully.' });
 });
 
 // Start the server and listen on the 3000 port
