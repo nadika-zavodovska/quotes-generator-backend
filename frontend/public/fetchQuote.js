@@ -28,6 +28,13 @@ document.getElementById('quote-form').addEventListener('submit', async function 
     const author = document.getElementById('new-quote-author').value.trim();
     const statusMessage = document.getElementById('form-status-message');
 
+    // Display red alert message, if quote or author fields are empty 
+    if (!quote || !author) {
+        statusMessage.textContent = 'Quote and author fields are required.';
+        statusMessage.style.color = 'red';
+        return;
+    }
+
     // Sending the quote and author to the server 
     try {
         const response = await fetch('http://localhost:3000/quote', {
