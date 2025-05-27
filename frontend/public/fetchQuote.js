@@ -40,13 +40,16 @@ document.getElementById('quote-form').addEventListener('submit', async function 
 
     // Sending the quote and author to the server 
     try {
-        const response = await fetch('http://localhost:3000/quote', {
-            method: 'POST',
-            // Send data in JSON 
-            headers: { 'Content-Type': 'application/json' },
-            // Convert our data to JSON string 
-            body: JSON.stringify({ quote, author }),
-        });
+        const response = await fetch(
+            'https://nadika-zavodovska-quote-server.hosting.codeyourfuture.io/quote',
+            {
+                method: 'POST',
+                // Send data in JSON
+                headers: { 'Content-Type': 'application/json' },
+                // Convert our data to JSON string
+                body: JSON.stringify({ quote, author }),
+            }
+        );
         // Wait for the response. Assign result of the response to result variable 
         const result = await response.json();
 
